@@ -6,11 +6,11 @@ for (let button of buttons) {
     if (button.textContent != 'C')
         button.addEventListener("click", () => {
             console.log(button.textContent)
-            field.textContent += button.textContent;
+            field.value += button.textContent;
         })
     else
         button.addEventListener("click", () => {
             console.log('CLEAR')
-            field.textContent = '';
+            field.value = '';
         })
 }
