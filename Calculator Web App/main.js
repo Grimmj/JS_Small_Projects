@@ -1,37 +1,57 @@
+/*
+    Class instantiation
+*/
+class Node {
+    constructor(value) {
+        this.elem = value;
+        this.next = null;
+    }
+}
+
+class Stack {
+    constructor() {
+        this.headNode = new Node;
+        this.tailNode = new Node;
+        this.length = 0;
+    }
+    shift() {
+        if (this.length === 0)
+            return null;
+        else {
+            let spareNode = this.headNode;
+            this.headNode = this.headNode.next;
+            this.length--;
+            return spareNode.elem;
+        }
+    }
+    unshift(value) {
+        let newNode = new Node(value);
+        if (this.length === 0) {
+            this.headNode = newNode;
+            this.tailNode = newNode;
+        }
+        else {
+            newNode.next = this.headNode;
+            this.headNode = newNode;
+        }
+        this.length++;
+    }
+}
+
+/*
+    Global variable instantiation
+*/
 let field = document.getElementById("text-field");
 let buttons = document.querySelectorAll('button');
+let expression = '';
+let calcPEMDAS = new Stack;
 
+/*
+    Event listener definitions
+*/
 field.addEventListener("input", () => {
     // console.log(field.value)
 })
-
-let expression = '';
-
-/*
-    CALCULATOR OPERATION LOGIC
-
-    Calculators evaluate user entered expressions by following the P.E.M.D.A.S.
-    order of operations. In order to ensure the proper expression evaluation
-    a FIFO stack will need to be used to store entered values as well as operator
-    symbols.
-*/
-
-function evaluateExpression() {
-    let entry = field.value.toString();
-    let val = '';
-    let arr = [];
-    // 57 48
-    console.log('entered values are', entry)
-    for (let i = 0; i < entry.length; i++) {
-        if ((entry.charCodeAt(i) < 58) && (entry.charCodeAt(i) > 47)) {
-            val += entry[i];
-        }
-        else {
-
-            val = '';
-        }
-    }
-}
 
 for (let button of buttons) {
     if ((button.textContent !== 'C') && (button.textContent != '='))
@@ -48,3 +68,37 @@ for (let button of buttons) {
             field.value = '';
         })
 }
+
+/*
+    CALCULATOR OPERATION LOGIC
+
+    Calculators evaluate user entered expressions by following the P.E.M.D.A.S.
+    order of operations. In order to ensure the proper expression evaluation
+    a linked list will need to be used to store entered values as well as operator
+    symbols.
+
+    NOTE:
+    ASCII values for characters '0' - '9' range from '48' - '57' respectively.
+*/
+function evaluateExpression() {
+    let entry = field.value.toString();
+    let val = '';
+    let arr = [];
+    console.log('entered values are', entry)
+    for (let i = 0; i < entry.length + 1; i++) {
+        if (((entry.charCodeAt(i) < 58) && (entry.charCodeAt(i) > 47)) || (entry.charCodeAt(i) === 46)) {
+            val += entry[i];
+        }
+        else {
+            calcPEMDAS.unshift(val);
+            val = '';
+        }
+    }
+}
+/*
+    ASCII
+    +   43
+    -   45
+    *   42
+    /   47
+*/
