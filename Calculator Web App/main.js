@@ -36,6 +36,35 @@ class Stack {
         }
         this.length++;
     }
+    push(value) {
+        let newNode = new Node(value);
+        if (this.length === 0) {
+            this.headNode = newNode;
+            this.tailNode = newNode;
+        }
+        else {
+            this.tailNode.next = newNode;
+            this.tailNode = newNode;
+        }
+        this.length++;
+    }
+    pop() {
+        if (this.length === 0)
+            return null;
+        else {
+            let i = 0;
+            let stlNode = this.headNode;
+            while (i < (this.length - 2)) {
+                console.log(stlNode)
+                stlNode = stlNode.next;
+                i++;
+            }
+            this.tailNode = stlNode;
+            stlNode = stlNode.next;
+            this.length--;
+            return stlNode.elem;
+        }
+    }
 }
 
 /*
