@@ -108,6 +108,22 @@ for (let button of buttons) {
 
     NOTE:
     ASCII values for characters '0' - '9' range from '48' - '57' respectively.
+
+    Investigate popping from stack then pushing back in
+    for example...
+    6*8 - 3*4
+
+    pop and perform 6*8 but return it into stack...
+
+    6       3       48      36
+    *       *       -
+    8       4       12
+    -   ->      ->      ->  
+    3       48
+    *       -
+    4
+
+    may need a buffer node to act as the expression separator
 */
 function evaluateExpression() {
     let entry = field.value.toString();
