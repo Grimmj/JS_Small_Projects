@@ -65,6 +65,11 @@ class Stack {
             return stlNode.elem;
         }
     }
+    clear() {
+        this.headNode = null;
+        this.tailNode = null;
+        this.length = 0;
+    }
 }
 
 /*
@@ -126,12 +131,15 @@ for (let button of buttons) {
     may need a buffer node to act as the expression separator
 */
 function evaluateExpression() {
+    calcPEMDAS.clear();
     let entry = field.value.toString();
     let val = '';
     let arr = [];
     console.log('entered values are', entry)
     for (let i = 0; i < entry.length + 1; i++) {
-        if (((entry.charCodeAt(i) < 58) && (entry.charCodeAt(i) > 47)) || (entry.charCodeAt(i) === 46)) {
+        if (((entry.charCodeAt(i) < 58) && (entry.charCodeAt(i) > 47))
+
+            || (entry.charCodeAt(i) === 46)) {
             val += entry[i];
         }
         else {
