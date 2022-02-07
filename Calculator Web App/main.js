@@ -51,13 +51,24 @@ class Stack {
     pop() {
         if (this.length === 0)
             return null;
+        else if(this.length === 1){
+            let stlNode = this.headNode;
+            this.headNode = null;
+            this.tailNode = null;
+            this.length--;
+            return stlNode.elem;
+        }
         else {
             let i = 0;
             let stlNode = this.headNode;
-            while (i < (this.length - 2)) {
-                console.log(stlNode)
-                stlNode = stlNode.next;
-                i++;
+            if(this.length >= 2){
+                while (i < (this.length - 2)) {
+                    stlNode = stlNode.next;
+                    i++;
+                }
+            }
+            else{
+                stlNode = this.tailNode;
             }
             this.tailNode = stlNode;
             stlNode = stlNode.next;
@@ -136,16 +147,21 @@ function evaluateExpression() {
     let val = '';
     let arr = [];
     console.log('entered values are', entry)
+    // Populate Linked List
     for (let i = 0; i < entry.length + 1; i++) {
-        if (((entry.charCodeAt(i) < 58) && (entry.charCodeAt(i) > 47))
-
-            || (entry.charCodeAt(i) === 46)) {
+        if (((entry.charCodeAt(i) < 58) && (entry.charCodeAt(i) > 47)) || (entry.charCodeAt(i) === 46)) {
             val += entry[i];
         }
         else {
-            calcPEMDAS.unshift(val);
+            calcPEMDAS.push(val);
+            calcPEMDAS.push(entry[i]);
             val = '';
         }
+    }
+    let limit = calcPEMDAS.length+1;
+    for (let j = 0; j < limit; j++){
+        console.log(calcPEMDAS.length, calcPEMDAS.tailNode)
+        console.log(calcPEMDAS.pop())
     }
 }
 /*
