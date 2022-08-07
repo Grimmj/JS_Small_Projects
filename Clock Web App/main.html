@@ -29,9 +29,17 @@
     <div id='sliding-list-group' class="container">
         <!--time zone sliding list selection to change time displayed as selected time zone-->
         <div id='time-zone-selection'>
-            <input id='tz1' type='radio' name="time-zone">#1</input>
-            <input id='tz2' type='radio' name="time-zone">#2</input>
-            <input id='tz3' type='radio' name="time-zone" checked="yes">#3</input>
+            <h3>Time Zone Selection</h3>
+            <p>Timezone set to Central Standard Time (CST) by default.</p>
+                <input id='tz1' class='time-zone' value="1" type='radio' name="time-zone">Atlantic Standard Time (AST)</input> <!--Offset +1 Hours--><br>
+                <input id='tz2' class='time-zone' value="1" type='radio' name="time-zone">Eastern Standard Time (EST)</input> <!--Offset +1 Hours--><br>
+                <input id='tz3' class='time-zone' value="0" type='radio' name="time-zone" checked="yes">Central Standard Time (CST)</input> <!--No Offset--><br>
+                <input id='tz4' class='time-zone' value="-1" type='radio' name="time-zone">Mountain Standard Time (MST)</input> <!--Offset -1 Hours--><br>
+                <input id='tz5' class='time-zone' value="-2" type='radio' name="time-zone">Pacific Standard Time (PST)</input> <!--Offset -2 Hours--><br>
+                <input id='tz6' class='time-zone' value="-3" type='radio' name="time-zone">Alaskan Standard Time (AKST)</input> <!--Offset -3 Hours--><br>
+                <input id='tz7' class='time-zone' value="-4" type='radio' name="time-zone">Hawaii-Aleutian Standard Time (HST)</input> <!--Offset -4 Hours--><br>
+                <input id='tz8' class='time-zone' value="-5" type='radio' name="time-zone">Samoa Standard Time (UTC-11)</input> <!--Offset -5 Hours--><br>
+            <!--    <input id='tz9' type='radio' name="time-zone">Chamorro Standard Time (UTC+10)</input> -->
         </div>
     </div>
     <script src="index.js"></script>
