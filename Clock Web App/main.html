@@ -16,6 +16,7 @@
         <h1 id="title">CLOCK APP</h1>
     </div>
     <div id='display-group' class="container">
+        <!--add interactive world map depicting all time zones-->
         <div id='clock' class="badge rounded-pill bg-secondary"></div>
     </div>
     <div id='control-panel' class="container">
@@ -23,6 +24,14 @@
         <div id='time-format'>
             <input id="12-hour" type="radio" name="format"> : 12 - Hour</input>
             <input id="24-hour" type="radio" name="format" checked="yes"> : 24 - Hour</input>
+        </div>
+    </div>
+    <div id='sliding-list-group' class="container">
+        <!--time zone sliding list selection to change time displayed as selected time zone-->
+        <div id='time-zone-selection'>
+            <input id='tz1' type='radio' name="time-zone">#1</input>
+            <input id='tz2' type='radio' name="time-zone">#2</input>
+            <input id='tz3' type='radio' name="time-zone" checked="yes">#3</input>
         </div>
     </div>
     <script src="index.js"></script>

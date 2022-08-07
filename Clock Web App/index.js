@@ -1,20 +1,20 @@
 let timeFormat = 0;
 let reformattedHours;
-let middayIndicator;
+let midDayIndicator;
 
 function updateTime() {
     let currentTime = new Date();
     console.log(currentTime.getTimezoneOffset())
     if (timeFormat === 0) {
         reformattedHours = currentTime.getHours();
-        middayIndicator = '';
+        midDayIndicator = '';
     }
     else {
         reformattedHours = (currentTime.getHours() > 12) ? currentTime.getHours() - 12 : currentTime.getHours();
-        middayIndicator = (currentTime.getHours() > 12) ? " PM" : " AM";
+        midDayIndicator = (currentTime.getHours() > 12) ? " PM" : " AM";
     }
     let displayTime = `${leadingZeros(reformattedHours)} : ${leadingZeros(currentTime.getMinutes())} : ${leadingZeros(currentTime.getSeconds())}`;
-    document.getElementById("clock").textContent = displayTime + middayIndicator;
+    document.getElementById("clock").textContent = displayTime + midDayIndicator;
 };
 
 function leadingZeros(num) {
